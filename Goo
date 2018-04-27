@@ -3,3 +3,12 @@ https://keep.google.com/u/0
 https://www.google.com/contacts/?hl=en&tab=wC&authuser=0
 https://www.blogger.com/?tab=wjop
 https://books.google.com/bkshp?hl=en&tab=wp&authuser=0
+public void startStartAWebApp(String startUrl, int sourceFlag, String packageName) {
+    Intent intent = new Intent("com.google.android.apps.chrome.webapps.WebappManager.ACTION_START_WEBAPP"); 
+    intent.putExtra("org.chromium.chrome.browser.webapp_url", startUrl); // String
+    intent.putExtra("org.chromium.chrome.browser.webapp_source", sourceFlag); // int
+    intent.putExtra("org.chromium.chrome.browser.webapk_package_name", packageName); // String
+    if (intent.resolveActivity(getPackageManager()) != null) { 
+        startActivity(intent);
+    }
+}
